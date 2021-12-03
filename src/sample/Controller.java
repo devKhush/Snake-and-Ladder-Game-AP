@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -17,6 +19,8 @@ public class Controller
     @FXML
     private ImageView image;
 
+    @FXML private Button startButton;
+
     @FXML
     private TextField tfTitle1;
 
@@ -24,8 +28,7 @@ public class Controller
     private TextField tfTitle2;
 
     @FXML
-    void btnOKclicked(ActionEvent event) throws IOException
-    {
+    void btnOKclicked(ActionEvent event) throws IOException {
         Stage mainWindow = (Stage) tfTitle1.getScene().getWindow();
         String title1 = tfTitle1.getText();
         String title2 = tfTitle2.getText();
@@ -44,6 +47,17 @@ public class Controller
         String t=game.getTitle();
     }
 
+    public void setButtonSkin(){
+        Glow glow = new Glow();
+        glow.setLevel(0.9);
+        startButton.setEffect(glow);
+    }
+
+    public void removeButtonSkin(){
+        Glow glow = new Glow();
+        glow.setLevel(0);
+        startButton.setEffect(glow);
+    }
 
 }
 
