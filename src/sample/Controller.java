@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -16,6 +19,8 @@ public class Controller
 
     @FXML
     private ImageView image;
+
+    @FXML private Button startButton;
 
     @FXML
     private TextField tfTitle1;
@@ -44,8 +49,17 @@ public class Controller
         String t=game.getTitle();
     }
 
+    public void setButtonSkin(){
+        Glow glow = new Glow();
+        glow.setLevel(0.9);
+        startButton.setEffect(glow);
+    }
 
+    public void removeButtonSkin(){
+        Glow glow = new Glow();
+        glow.setLevel(0);
+        startButton.setEffect(glow);
+    }
 }
-
 
 

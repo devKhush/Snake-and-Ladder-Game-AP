@@ -13,34 +13,34 @@
    <children>
       <ImageView fx:id="image" fitHeight="720.0" fitWidth="720.0" layoutX="-10.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/julijamilaja150800057.jpg" />
+            <Image url="@assets/home.jpg" />
          </image>
          <effect>
             <Blend />
          </effect>
       </ImageView>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnOKclicked" text="START" textAlignment="CENTER">
+      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnOKclicked" onMouseExited="#removeButtonSkin" onMouseMoved="#setButtonSkin" text="START" textAlignment="CENTER">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="30.0" />
          </font></Button>
-      <Label layoutX="308.0" layoutY="301.0" prefHeight="36.0" prefWidth="83.0" text="Player1" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="308.0" layoutY="301.0" prefHeight="36.0" prefWidth="83.0" text="Player 1" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Agency FB Bold" size="25.0" />
          </font></Label>
-      <TextField fx:id="tfTitle1" layoutX="242.0" layoutY="337.0" prefHeight="6.0" prefWidth="214.0" />
-      <Label layoutX="308.0" layoutY="387.0" prefHeight="36.0" prefWidth="83.0" text="Player2" textAlignment="CENTER" textFill="WHITE">
+      <TextField fx:id="tfTitle1" layoutX="242.0" layoutY="337.0" prefHeight="6.0" prefWidth="214.0" promptText="Player 1 Name" />
+      <Label layoutX="308.0" layoutY="387.0" prefHeight="36.0" prefWidth="83.0" text="Player 2" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Agency FB Bold" size="25.0" />
          </font></Label>
-      <TextField fx:id="tfTitle2" layoutX="242.0" layoutY="419.0" prefHeight="6.0" prefWidth="214.0" />
+      <TextField fx:id="tfTitle2" layoutX="242.0" layoutY="419.0" prefHeight="6.0" prefWidth="214.0" promptText="Player 2 Name" />
       <ImageView fitHeight="172.0" fitWidth="148.0" layoutX="534.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/clipart298148.png" />
+            <Image url="@assets/snake.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="172.0" fitWidth="193.0" layoutX="39.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/kisspng-ladder-staircases-escalator-image-design-5c8852899c3547.5900212415524378976398.png" />
+            <Image url="@assets/ladder.png" />
          </image>
       </ImageView>
    </children>
