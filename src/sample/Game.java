@@ -69,6 +69,7 @@ public class Game
             Image dice_6 =dice_image6.getImage();
             no_image.setImage(dice_6);
         }
+
     }
 
     //public void display_dice()
