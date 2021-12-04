@@ -55,7 +55,8 @@ public class Controller
         startButton.setEffect(glow);
     }
 
-    public void removeButtonSkin(){
+    public void removeButtonSkin()
+    {
         Glow glow = new Glow();
         glow.setLevel(0);
         startButton.setEffect(glow);
