@@ -35,8 +35,29 @@ public class Game
     @FXML
     Button roll_button;
 
+    @FXML
+    Text p1;
+
+    @FXML
+    Text p2;
+
+    int count=0;
+
     public void btnROLLclicked(ActionEvent event) throws IOException
     {
+        count++;
+
+        if(count%2==0)
+        {
+            p1.setUnderline(true);
+            p2.setUnderline(false);
+        }
+        else
+        {
+            p1.setUnderline(false);
+            p2.setUnderline(true);
+        }
+
         Random rand = new Random();
         int rand_int1 = rand.nextInt(6);
         if(rand_int1==0)
