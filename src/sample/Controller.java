@@ -54,6 +54,8 @@ public class Controller {
         Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
         game.getIcons().add(image);
         game.setTitle(title1+" vs "+title2);
+        playerNames[0] = title1;
+        playerNames[1] = title2;
         game.setScene(new Scene(root));
         game.show();
     }
