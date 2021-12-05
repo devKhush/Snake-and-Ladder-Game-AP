@@ -74,8 +74,7 @@ public class Game {
             p2.setUnderline(false);
             playe2_pic.setEffect(glow);
         }
-        else
-        {
+        else {
             p2.setFill(Color.WHITE);
             Effect glow = new Glow(1.0);
             p2.setUnderline(true);
