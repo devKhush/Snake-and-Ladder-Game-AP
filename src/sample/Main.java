@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
         primaryStage.getIcons().add(image);
-        primaryStage.setTitle("Snake & Lader");
+        primaryStage.setTitle("Snakes & Ladders");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
