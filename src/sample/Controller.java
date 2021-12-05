@@ -10,12 +10,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller
-{
+public class Controller {
+
+    public static String[] getPlayerNames() {
+        return playerNames;
+    }
+
+    static String[] playerNames = new String[2];
 
     @FXML
     private ImageView image;
@@ -41,12 +47,15 @@ public class Controller
         mainWindow.setTitle(title1+" vs "+title2);
         mainWindow.close();
 
+        playerNames[0] = title1;
+        playerNames[1] = title2;
         Stage game = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
+        Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
+        game.getIcons().add(image);
         game.setTitle(title1+" vs "+title2);
         game.setScene(new Scene(root));
         game.show();
-        String t=game.getTitle();
     }
 
     public void setButtonSkin(){
@@ -62,5 +71,3 @@ public class Controller
         startButton.setEffect(glow);
     }
 }
-
-

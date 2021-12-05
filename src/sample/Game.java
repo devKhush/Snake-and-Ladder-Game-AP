@@ -8,14 +8,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class Game
-{
+public class Game {
+
     @FXML
     ImageView dice_image1;
     @FXML
@@ -33,6 +37,12 @@ public class Game
     ImageView no_image;
 
     @FXML
+    ImageView playe2_pic;
+
+    @FXML
+    ImageView playe1_pic;
+
+    @FXML
     Button roll_button;
 
     @FXML
@@ -45,17 +55,38 @@ public class Game
 
     public void btnROLLclicked(ActionEvent event) throws IOException
     {
+        p1.setText(Controller.getPlayerNames()[0]);
+        p1.setOpacity(1);
+        p2.setText(Controller.getPlayerNames()[1]);
+        p2.setOpacity(1);
         count++;
-
         if(count%2==0)
         {
+            p1.setFill(Color.WHITE);
+            Effect glow = new Glow(1.0);
+            p1.setEffect(glow);
             p1.setUnderline(true);
+            glow = new Glow(0.7);
+            playe1_pic.setEffect(glow);
+            glow = new Glow(0);
+            p2.setFill(Color.BLACK);
+            p2.setEffect(glow);
             p2.setUnderline(false);
+            playe2_pic.setEffect(glow);
         }
         else
         {
-            p1.setUnderline(false);
+            p2.setFill(Color.WHITE);
+            Effect glow = new Glow(1.0);
             p2.setUnderline(true);
+            p2.setEffect(glow);
+            glow = new Glow(0.7);
+            playe2_pic.setEffect(glow);
+            glow = new Glow(0);
+            p1.setEffect(glow);
+            p1.setUnderline(false);
+            p1.setFill(Color.BLACK);
+            playe1_pic.setEffect(glow);
         }
 
         Random rand = new Random();
@@ -90,7 +121,40 @@ public class Game
             Image dice_6 =dice_image6.getImage();
             no_image.setImage(dice_6);
         }
+    }
 
+    public void setButtonSkin(){
+        Glow glow = new Glow();
+        glow.setLevel(0.8);
+        roll_button.setEffect(glow);
+    }
+
+    public void removeButtonSkin() {
+        Glow glow = new Glow();
+        glow.setLevel(0);
+        roll_button.setEffect(glow);
+    }
+
+    @FXML
+    public void initialize()
+    {
+        String name_1=Controller.getPlayerNames()[0];
+        String name_2=Controller.getPlayerNames()[1];
+        p1.setText(name_1);
+        p1.setOpacity(1);
+        p2.setText(name_2);
+        p2.setOpacity(1);
+        p1.setFill(Color.WHITE);
+        Effect glow = new Glow(1.0);
+        p1.setEffect(glow);
+        p1.setUnderline(true);
+        glow = new Glow(0.7);
+        playe1_pic.setEffect(glow);
+        glow = new Glow(0);
+        p2.setFill(Color.BLACK);
+        p2.setEffect(glow);
+        p2.setUnderline(false);
+        playe2_pic.setEffect(glow);
     }
 
 }
