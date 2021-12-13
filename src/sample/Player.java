@@ -10,6 +10,8 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Player {
+
+    private String name;
     @FXML
     private ImageView playerToken;
     @FXML
@@ -197,7 +199,11 @@ public class Player {
                 }
             }
 
-            else if (((byAmount*55)<=(initialXPosition-55)) && (playerYLocation == -495) && (playerXLocation >= 55 && playerXLocation <= 550)) {
+            else if ((playerYLocation == -495) && (playerXLocation >= 385 && playerXLocation <= 550)) {
+                playerXLocation -= 55;
+                translateLocationOfPlayer();
+            }
+            else if ((playerYLocation == -495) && (playerXLocation >= 55 && playerXLocation <= 385) && ((byAmount*55)<=(initialXPosition-55))) {
                 playerXLocation -= 55;
                 translateLocationOfPlayer();
                 if ((playerYLocation == -495) && (playerXLocation == 55) && (i == byAmount) && (((initialXPosition-55)/55)==byAmount)) {
@@ -222,6 +228,12 @@ public class Player {
         animate.setAutoReverse(false);
         animate.play();
     }
+
+    public void setName(String name) {
+        this.name = name;
+        this.playerText.setText(name);
+    }
+
 
     public void rollDie(Die die){
         die.roll();
@@ -252,20 +264,8 @@ public class Player {
         return playerWon;
     }
 
-    public ImageView getPlayerToken() {
-        return playerToken;
-    }
-
-    public double getPlayerXLocation() {
-        return playerXLocation;
-    }
-
     public void setPlayerXLocation(double playerXLocation) {
         this.playerXLocation = playerXLocation;
-    }
-
-    public double getPlayerYLocation() {
-        return playerYLocation;
     }
 
     public void setPlayerYLocation(double playerYLocation) {
@@ -278,26 +278,6 @@ public class Player {
 
     public void setPlayerGameStarted(boolean playerGameStarted) {
         this.playerGameStarted = playerGameStarted;
-    }
-
-    public void setPlayerToken(ImageView playerToken) {
-        this.playerToken = playerToken;
-    }
-
-    public ImageView getPlayerPicture() {
-        return playerPicture;
-    }
-
-    public void setPlayerPicture(ImageView playerPicture) {
-        this.playerPicture = playerPicture;
-    }
-
-    public Text getPlayerText() {
-        return playerText;
-    }
-
-    public void setPlayerText(Text playerText) {
-        this.playerText = playerText;
     }
 
     @Override

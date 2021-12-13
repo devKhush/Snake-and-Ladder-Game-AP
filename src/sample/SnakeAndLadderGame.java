@@ -48,6 +48,8 @@ public class SnakeAndLadderGame {
     @FXML
     private ImageView player2Token;
 
+    Stage endGame;
+
 
     // Player Instantiation
     Player player1 ;
@@ -106,10 +108,10 @@ public class SnakeAndLadderGame {
                 else
                     System.out.println("Player 2 Won");
 
-                Stage end = new Stage();
+                endGame = new Stage();            // End can be made as composition in the Game
                 Parent root = FXMLLoader.load(getClass().getResource("end.fxml"));
-                end.setScene(new Scene(root));
-                end.show();
+                endGame.setScene(new Scene(root));
+                endGame.show();
             }
             count++;
         }
@@ -136,8 +138,8 @@ public class SnakeAndLadderGame {
         snake = new Snake();
         die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6);
 
-        player1.getPlayerText().setText(MainWindow.getPlayerNames()[0]);
-        player2.getPlayerText().setText(MainWindow.getPlayerNames()[1]);
+        player1.setName(MainWindow.getPlayerNames()[0]);
+        player2.setName(MainWindow.getPlayerNames()[1]);
         count = 0;
         player1.glowPlayerToken();
         player2.dimPlayerToken();
