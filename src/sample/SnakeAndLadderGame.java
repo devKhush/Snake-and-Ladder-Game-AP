@@ -2,10 +2,15 @@ package sample;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class SnakeAndLadderGame {
 
@@ -59,7 +64,7 @@ public class SnakeAndLadderGame {
         return (count%2==1);
     }
 
-    public void rollButtonClicked() {
+    public void rollButtonClicked() throws IOException {
         if (!gameOver) {
 
             if (ifPlayer1Turn()) {
@@ -94,13 +99,17 @@ public class SnakeAndLadderGame {
             }
 
             gameOver = player1.isPlayerWon()||player2.isPlayerWon();
-            if (gameOver){
+            if (gameOver)
+            {
                 if (player1.isPlayerWon())
                     System.out.println("Player 1 Won");
                 else
                     System.out.println("Player 2 Won");
 
-                // ADD CODE FOR POP-UP WINDOW HERE !!!
+                Stage end = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("end.fxml"));
+                end.setScene(new Scene(root));
+                end.show();
             }
             count++;
         }
