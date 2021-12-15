@@ -59,16 +59,15 @@ public class SnakeAndLadderGame {
     Die die;
     boolean gameOver = false;
 
-    private boolean ifPlayer1Turn(){
+    private static boolean ifPlayer1Turn(){
         return count%2==0;
     }
-    private boolean ifPlayer2Turn(){
+    private static boolean ifPlayer2Turn(){
         return (count%2==1);
     }
 
     public void rollButtonClicked() throws IOException {
         if (!gameOver) {
-
             if (ifPlayer1Turn()) {
                 player1.rollDie(die);
                 die.setDiceFaceImage(die.getFaceValue());
@@ -77,9 +76,7 @@ public class SnakeAndLadderGame {
 
                 }
                 if ((ifPlayer1Turn()) && (!player1.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
-                    player1.setPlayerGameStarted(true);
-                    player1.setPlayerXLocation(55);
-                    player1.translateLocationOfPlayer();
+                    player1.initialMove();
                 }
                 player1.dimPlayerToken();
                 player2.glowPlayerToken();
@@ -92,17 +89,14 @@ public class SnakeAndLadderGame {
                     player2.movePLayer(die.getFaceValue(), ladder, snake);
                 }
                 if ((ifPlayer2Turn()) && (!player2.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
-                    player2.setPlayerGameStarted(true);
-                    player2.setPlayerXLocation(55);
-                    player2.translateLocationOfPlayer();
+                    player2.initialMove();
                 }
                 player2.dimPlayerToken();
                 player1.glowPlayerToken();
             }
 
             gameOver = player1.isPlayerWon()||player2.isPlayerWon();
-            if (gameOver)
-            {
+            if (gameOver) {
                 if (player1.isPlayerWon())
                     System.out.println("Player 1 Won");
                 else
