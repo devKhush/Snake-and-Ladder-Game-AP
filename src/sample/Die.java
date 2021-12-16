@@ -1,6 +1,6 @@
 package sample;
 
-import javafx.scene.image.Image;
+import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 
 import java.util.Random;
@@ -37,19 +37,48 @@ public class Die {
         return faceValue;
     }
 
+    public ImageView getDiceFaceImage() {
+        return diceFaceImage;
+    }
+
+    public ImageView getDice_image1() {
+        return dice_image1;
+    }
+
+    public ImageView getDice_image2() {
+        return dice_image2;
+    }
+
+    public ImageView getDice_image3() {
+        return dice_image3;
+    }
+
+    public ImageView getDice_image4() {
+        return dice_image4;
+    }
+
+    public ImageView getDice_image5() {
+        return dice_image5;
+    }
+
+    public ImageView getDice_image6() {
+        return dice_image6;
+    }
+
     public void setDiceFaceImage(int faceValue){
-        if (faceValue == 1) {
-            diceFaceImage.setImage(dice_image1.getImage());
-        } else if (faceValue == 2) {
-            diceFaceImage.setImage(dice_image2.getImage());
-        } else if (faceValue == 3) {
-            diceFaceImage.setImage(dice_image3.getImage());
-        } else if (faceValue == 4) {
-            diceFaceImage.setImage(dice_image4.getImage());
-        } else if (faceValue == 5) {
-            diceFaceImage.setImage(dice_image5.getImage());
-        } else if (faceValue == 6) {
-            diceFaceImage.setImage(dice_image6.getImage());
-        }
+//        if (faceValue == 1) {
+//            diceFaceImage.setImage(dice_image1.getImage());
+//        } else if (faceValue == 2) {
+//            diceFaceImage.setImage(dice_image2.getImage());
+//        } else if (faceValue == 3) {
+//            diceFaceImage.setImage(dice_image3.getImage());
+//        } else if (faceValue == 4) {
+//            diceFaceImage.setImage(dice_image4.getImage());
+//        } else if (faceValue == 5) {
+//            diceFaceImage.setImage(dice_image5.getImage());
+//        } else if (faceValue == 6) {
+//            diceFaceImage.setImage(dice_image6.getImage());
+//        }
+        Platform.runLater(new DieRunnable(this));
     }
 }

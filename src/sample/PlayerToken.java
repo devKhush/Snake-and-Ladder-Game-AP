@@ -1,44 +1,56 @@
 package sample;
 
-import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 
-public class PlayerToken {
+public class PlayerToken implements PlayerComponent{
 
     @FXML
     private ImageView playerTokenImage;
 
-    Player player;
+    @FXML
+    private Player player;
 
     public PlayerToken(Player player, ImageView playerTokenImage) {
         this.player = player;
         this.playerTokenImage = playerTokenImage;
     }
 
-    public void glowToken(){
-        Glow glow = new Glow(0.8);
-        playerTokenImage.setEffect(glow);
+    public void glow(){
+//        Glow glow = new Glow(0.8);
+//        playerTokenImage.setEffect(glow);
+        Platform.runLater(new AddPlayerEffect<PlayerToken>(this,true));
     }
 
-    public void dimToken(){
-        Glow glow = new Glow(0.0);
-        playerTokenImage.setEffect(glow);
+    public void dim(){
+//        Glow glow = new Glow(0.0);
+//        playerTokenImage.setEffect(glow);
+        Platform.runLater(new AddPlayerEffect<PlayerToken>(this,false));
     }
 
     @FXML
     void translatePlayerToken(){
-        TranslateTransition animate = new TranslateTransition(Duration.millis(1500), playerTokenImage);
+        /*TranslateTransition animate = new TranslateTransition(Duration.millis(1500), playerTokenImage);
         animate.setToX(player.getPlayerXLocation());
         animate.setToY(player.getPlayerYLocation());
         animate.setAutoReverse(false);
-        animate.play();
+        animate.play();*/
+        try {
+            Thread.sleep(800);
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println(e.getMessage());
+            System.out.println("Thread sleep failed...");
+        }
+        Platform.runLater(new TokenRunnable(this));
     }
 
+    public ImageView getPlayerTokenImage() {
+        return playerTokenImage;
+    }
 
-    public Player getPlayer() {
+    public Player playerOf() {
         return player;
     }
 }

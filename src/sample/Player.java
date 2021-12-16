@@ -11,11 +11,11 @@ public class Player {
     private String name;
 
     @FXML
-    private ImageView playerPicture;
+    private PlayerTextName playerText;
     @FXML
-    private Text playerText;
-
     private PlayerToken playerToken;
+    @FXML
+    private PlayerImage playerPicture;
 
     private double playerXLocation = 0;
     private double playerYLocation = 0;
@@ -23,9 +23,10 @@ public class Player {
     private boolean playerWon = false;
 
     public Player(ImageView playerToken, ImageView playerPicture, Text playerText) {
-        this.playerPicture = playerPicture;
-        this.playerText = playerText;
+        this.playerPicture = new PlayerImage(this,playerPicture);
+        this.playerText = new PlayerTextName(this,playerText);
         this.playerToken = new PlayerToken(this,playerToken);
+        this.name = playerText.getText();
     }
 
     @FXML
@@ -219,11 +220,6 @@ public class Player {
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-        this.playerText.setText(name);
-    }
-
     public void initialMove(){
         playerGameStarted = true;
         playerXLocation = 55;
@@ -234,25 +230,16 @@ public class Player {
         die.roll();
     }
 
-    public void glowPlayerToken(){
-        Effect glow = new Glow(1.0);
-        playerText.setFill(Color.WHITE);
-        playerText.setEffect(glow);
-        playerText.setUnderline(true);
-        playerText.setOpacity(1);
-        playerPicture.setEffect(glow);
-        glow = new Glow(0.8);
-        playerToken.glowToken();
+    public void glowPlayer(){
+        playerText.glow();
+        playerPicture.glow();
+        playerToken.glow();
     }
 
-    public void dimPlayerToken(){
-        Effect glow = new Glow(0);
-        playerText.setFill(Color.BLACK);
-        playerText.setEffect(glow);
-        playerText.setUnderline(false);
-        playerText.setOpacity(1);
-        playerPicture.setEffect(glow);
-        playerToken.dimToken();
+    public void dimPlayer(){
+        playerText.dim();
+        playerPicture.dim();
+        playerToken.dim();
     }
 
     public double getPlayerXLocation() {
@@ -279,15 +266,4 @@ public class Player {
         return playerGameStarted;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "playerToken=" + playerToken +
-                ", playerPicture=" + playerPicture +
-                ", playerText=" + playerText +
-                ", playerXLocation=" + playerXLocation +
-                ", playerYLocation=" + playerYLocation +
-                ", playerGameStarted=" + playerGameStarted +
-                '}';
-    }
 }

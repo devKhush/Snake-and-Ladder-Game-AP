@@ -52,48 +52,51 @@ public class SnakeAndLadderGame {
 
 
     // Player Instantiation
-    Player player1 ;
-    Player player2 ;
-    Ladder ladder;
-    Snake snake;
-    Die die;
-    boolean gameOver = false;
+    private Player player1 ;
+    private Player player2 ;
+    private Ladder ladder;
+    private Snake snake;
+    private Die die;
+    private boolean gameOver = false;
 
-    private static boolean ifPlayer1Turn(){
+    static boolean ifPlayer1Turn(){
         return count%2==0;
     }
-    private static boolean ifPlayer2Turn(){
+     static boolean ifPlayer2Turn(){
         return (count%2==1);
     }
 
     public void rollButtonClicked() throws IOException {
         if (!gameOver) {
-            if (ifPlayer1Turn()) {
-                player1.rollDie(die);
-                die.setDiceFaceImage(die.getFaceValue());
-                if (ifPlayer1Turn() && player1.isPlayerGameStarted()) {
-                    player1.movePLayer(die.getFaceValue(), ladder, snake);
+//            if (ifPlayer1Turn()) {
+//                player1.rollDie(die);
+//                die.setDiceFaceImage(die.getFaceValue());
+//                if (ifPlayer1Turn() && player1.isPlayerGameStarted()) {
+//                    player1.movePLayer(die.getFaceValue(), ladder, snake);
+//
+//                }
+//                if ((ifPlayer1Turn()) && (!player1.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
+//                    player1.initialMove();
+//                }
+//                player1.dimPlayer();
+//                player2.glowPlayer();
+//            }
+//
+//            else if (ifPlayer2Turn()) {
+//                player2.rollDie(die);
+//                die.setDiceFaceImage(die.getFaceValue());
+//                if (ifPlayer2Turn() && player2.isPlayerGameStarted()) {
+//                    player2.movePLayer(die.getFaceValue(), ladder, snake);
+//                }
+//                if ((ifPlayer2Turn()) && (!player2.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
+//                    player2.initialMove();
+//                }
+//                player2.dimPlayer();
+//                player1.glowPlayer();
+//            }
 
-                }
-                if ((ifPlayer1Turn()) && (!player1.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
-                    player1.initialMove();
-                }
-                player1.dimPlayerToken();
-                player2.glowPlayerToken();
-            }
-
-            else if (ifPlayer2Turn()) {
-                player2.rollDie(die);
-                die.setDiceFaceImage(die.getFaceValue());
-                if (ifPlayer2Turn() && player2.isPlayerGameStarted()) {
-                    player2.movePLayer(die.getFaceValue(), ladder, snake);
-                }
-                if ((ifPlayer2Turn()) && (!player2.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
-                    player2.initialMove();
-                }
-                player2.dimPlayerToken();
-                player1.glowPlayerToken();
-            }
+            PlayerThread playerThread = new PlayerThread(player1,player2,this);
+            playerThread.start();
 
             gameOver = player1.isPlayerWon()||player2.isPlayerWon();
             if (gameOver) {
@@ -107,7 +110,7 @@ public class SnakeAndLadderGame {
                 endGame.setScene(new Scene(root));
                 endGame.show();
             }
-            count++;
+//            count++;
         }
     }
 
@@ -115,6 +118,18 @@ public class SnakeAndLadderGame {
         Glow glow = new Glow();
         glow.setLevel(0.8);
         roll_button.setEffect(glow);
+    }
+
+    public Ladder getLadder() {
+        return ladder;
+    }
+
+    public Snake getSnake() {
+        return snake;
+    }
+
+    public Die getDie() {
+        return die;
     }
 
     public void removeButtonSkin() {
@@ -132,11 +147,11 @@ public class SnakeAndLadderGame {
         snake = new Snake();
         die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6);
 
-        player1.setName(MainWindow.getPlayerNames()[0]);
-        player2.setName(MainWindow.getPlayerNames()[1]);
+        player1Text.setText(MainWindow.getPlayerNames()[0]);
+        player2Text.setText(MainWindow.getPlayerNames()[1]);
         count = 0;
-        player1.glowPlayerToken();
-        player2.dimPlayerToken();
+        player1.glowPlayer();
+        player2.dimPlayer();
     }
 
 }
