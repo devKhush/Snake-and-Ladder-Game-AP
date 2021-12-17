@@ -1,8 +1,9 @@
-package sample;
+package sample.Player;
 
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.paint.Color;
+import sample.Player.*;
 
 public class AddPlayerEffect<T extends PlayerComponent> implements Runnable{
     private T playerComponent;
@@ -16,20 +17,19 @@ public class AddPlayerEffect<T extends PlayerComponent> implements Runnable{
     @Override
     public void run() {
         if (toGlow) {
-            //System.out.println("Reached " + playerComponent.getClass().getName());
-            if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.PlayerToken")) {
+            if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.Player.PlayerToken")) {
                 PlayerToken token = (PlayerToken) playerComponent;
-                Glow glow = new Glow(0.8);
+                Glow glow = new Glow(1);
                 token.getPlayerTokenImage().setEffect(glow);
             }
-            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.PlayerImage")){
+            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.Player.PlayerImage")){
                 PlayerImage imageProfile = (PlayerImage) playerComponent;
-                Glow glow = new Glow(0.8);
+                Glow glow = new Glow(1);
                 imageProfile.getPlayerImage().setEffect(glow);
             }
-            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.PlayerTextName")){
+            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.Player.PlayerTextName")){
                 PlayerTextName playerTextName = (PlayerTextName) playerComponent;
-                Effect glow = new Glow(1.0);
+                Effect glow = new Glow(1);
                 playerTextName.getTextName().setFill(Color.WHITE);
                 playerTextName.getTextName().setEffect(glow);
                 playerTextName.getTextName().setUnderline(true);
@@ -37,17 +37,17 @@ public class AddPlayerEffect<T extends PlayerComponent> implements Runnable{
             }
         }
         else{
-            if (playerComponent != null && playerComponent.getClass().getName().equals("sample.PlayerToken")) {
+            if (playerComponent != null && playerComponent.getClass().getName().equals("sample.Player.PlayerToken")) {
                 PlayerToken token = (PlayerToken) playerComponent;
                 Glow glow = new Glow(0.0);
                 token.getPlayerTokenImage().setEffect(glow);
             }
-            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.PlayerImage")){
+            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.Player.PlayerImage")){
                 PlayerImage imageProfile = (PlayerImage) playerComponent;
                 Glow glow = new Glow(0.0);
                 imageProfile.getPlayerImage().setEffect(glow);
             }
-            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.PlayerTextName")){
+            else if (playerComponent!=null && playerComponent.getClass().getName().equals("sample.Player.PlayerTextName")){
                 PlayerTextName playerTextName = (PlayerTextName) playerComponent;
                 Effect glow = new Glow(0.0);
                 playerTextName.getTextName().setFill(Color.BLACK);

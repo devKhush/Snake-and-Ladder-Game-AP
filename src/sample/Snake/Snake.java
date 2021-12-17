@@ -1,4 +1,6 @@
-package sample;
+package sample.Snake;
+
+import sample.Player.Player;
 
 public class Snake {
 

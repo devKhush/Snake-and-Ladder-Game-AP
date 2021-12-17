@@ -1,7 +1,8 @@
-package sample;
+package sample.Player;
 
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
+import sample.Player.*;
 
 public class TokenMover implements Runnable{
     private PlayerToken token;

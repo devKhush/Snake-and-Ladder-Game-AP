@@ -1,4 +1,4 @@
-package sample;
+package sample.Player;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -18,15 +18,11 @@ public class PlayerImage implements PlayerComponent{
 
     @Override
     public void glow(){
-//        Glow glow = new Glow(0.8);
-//        playerMainImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerImage>(this,true));
     }
 
     @Override
     public void dim(){
-//        Glow glow = new Glow(0.0);
-//        playerMainImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerImage>(this,false));
     }
 

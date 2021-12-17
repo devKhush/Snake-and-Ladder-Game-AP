@@ -1,4 +1,6 @@
-package sample;
+package sample.Player;
+
+import sample.Game.SnakeAndLadderGame;
 
 public class PlayerHandler extends Thread{
     Player player1, player2;

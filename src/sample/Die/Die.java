@@ -1,4 +1,4 @@
-package sample;
+package sample.Die;
 
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;

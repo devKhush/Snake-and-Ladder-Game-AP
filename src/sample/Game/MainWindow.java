@@ -1,4 +1,4 @@
-package sample;
+package sample.Game;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,7 +51,7 @@ public class MainWindow {
         playerNames[0] = title1;
         playerNames[1] = title2;
         snakeAndLadderGame = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../game.fxml"));
         Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
         snakeAndLadderGame.getIcons().add(image);
         snakeAndLadderGame.setTitle(title1+" vs "+title2);

@@ -1,4 +1,6 @@
-package sample;
+package sample.Die;
+
+import sample.Die.Die;
 
 public class DieFaceChanger implements Runnable{
     private Die die;

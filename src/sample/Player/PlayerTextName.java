@@ -1,10 +1,10 @@
-package sample;
+package sample.Player;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-public class PlayerTextName implements PlayerComponent{
+public class PlayerTextName implements PlayerComponent {
     @FXML
     private Text textName;
 
@@ -18,21 +18,11 @@ public class PlayerTextName implements PlayerComponent{
 
     @Override
     public void glow() {
-//        Effect glow = new Glow(1.0);
-//        textName.setFill(Color.WHITE);
-//        textName.setEffect(glow);
-//        textName.setUnderline(true);
-//        textName.setOpacity(1);
         Platform.runLater(new AddPlayerEffect<PlayerTextName>(this,true));
     }
 
     @Override
     public void dim() {
-//        Effect glow = new Glow(0);
-//        textName.setFill(Color.BLACK);
-//        textName.setEffect(glow);
-//        textName.setUnderline(false);
-//        textName.setOpacity(1);
         Platform.runLater(new AddPlayerEffect<PlayerTextName>(this,false));
     }
 

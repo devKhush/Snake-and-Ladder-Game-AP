@@ -1,4 +1,6 @@
-package sample;
+package sample.Ladder;
+
+import sample.Player.Player;
 
 public class Ladder {
 

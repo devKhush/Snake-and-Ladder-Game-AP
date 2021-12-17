@@ -1,4 +1,4 @@
-package sample;
+package sample.Player;
 
 public interface PlayerComponent {
     public abstract void glow();

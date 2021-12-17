@@ -1,4 +1,4 @@
-package sample;
+package sample.Game;
 
 
 import javafx.fxml.FXML;
@@ -11,6 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sample.Die.Die;
+import sample.Ladder.Ladder;
+import sample.Player.Player;
+import sample.Player.PlayerHandler;
+import sample.Snake.Snake;
+
 import java.io.IOException;
 
 public class SnakeAndLadderGame {
@@ -49,6 +55,8 @@ public class SnakeAndLadderGame {
     @FXML
     private ImageView player2Token;
 
+    private End gameEndWindow;
+
     Stage endGame;
 
 
@@ -69,33 +77,6 @@ public class SnakeAndLadderGame {
 
     public void rollButtonClicked() throws IOException {
         if (!gameOver) {
-//            if (ifPlayer1Turn()) {
-//                player1.rollDie(die);
-//                die.setDiceFaceImage(die.getFaceValue());
-//                if (ifPlayer1Turn() && player1.isPlayerGameStarted()) {
-//                    player1.movePLayer(die.getFaceValue(), ladder, snake);
-//
-//                }
-//                if ((ifPlayer1Turn()) && (!player1.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
-//                    player1.initialMove();
-//                }
-//                player1.dimPlayer();
-//                player2.glowPlayer();
-//            }
-//
-//            else if (ifPlayer2Turn()) {
-//                player2.rollDie(die);
-//                die.setDiceFaceImage(die.getFaceValue());
-//                if (ifPlayer2Turn() && player2.isPlayerGameStarted()) {
-//                    player2.movePLayer(die.getFaceValue(), ladder, snake);
-//                }
-//                if ((ifPlayer2Turn()) && (!player2.isPlayerGameStarted()) && (die.getFaceValue() == 1)) {
-//                    player2.initialMove();
-//                }
-//                player2.dimPlayer();
-//                player1.glowPlayer();
-//            }
-
             PlayerHandler playerHandler = new PlayerHandler(player1,player2,this);
             playerHandler.start();
 
@@ -103,14 +84,13 @@ public class SnakeAndLadderGame {
             gameOver = player1.isPlayerWon()||player2.isPlayerWon();
             if (gameOver) {
                 if (player1.isPlayerWon()) {
-                    System.out.println("Player 1 Won");
+                    gameEndWindow = new End(player1,player2);
                 }
-                else {
-                    System.out.println("Player 2 Won");
+                else if (player2.isPlayerWon()){
+                    gameEndWindow = new End(player2,player1);
                 }
-
                 endGame = new Stage();            // End can be made as composition in the Game
-                Parent root = FXMLLoader.load(getClass().getResource("end.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../end.fxml"));
                 Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
                 endGame.getIcons().add(image);
                 endGame.setTitle("Result of Game: "+player1.getName()+" vs "+player2.getName());

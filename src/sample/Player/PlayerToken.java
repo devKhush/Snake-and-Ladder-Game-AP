@@ -1,10 +1,10 @@
-package sample;
+package sample.Player;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
-public class PlayerToken implements PlayerComponent{
+public class PlayerToken implements PlayerComponent {
 
     @FXML
     private ImageView playerTokenImage;
@@ -19,25 +19,16 @@ public class PlayerToken implements PlayerComponent{
 
     @Override
     public void glow(){
-//        Glow glow = new Glow(0.8);
-//        playerTokenImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerToken>(this,true));
     }
 
     @Override
     public void dim(){
-//        Glow glow = new Glow(0.0);
-//        playerTokenImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerToken>(this,false));
     }
 
     @FXML
-    void translatePlayerToken(){
-        /*TranslateTransition animate = new TranslateTransition(Duration.millis(1500), playerTokenImage);
-        animate.setToX(player.getPlayerXLocation());
-        animate.setToY(player.getPlayerYLocation());
-        animate.setAutoReverse(false);
-        animate.play();*/
+    public void translatePlayerToken(){
         try {
             Thread.sleep(800);
         } catch (Exception e) {
