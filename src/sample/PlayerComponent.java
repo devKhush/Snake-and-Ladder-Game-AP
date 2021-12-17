@@ -1,7 +1,7 @@
 package sample;
 
 public interface PlayerComponent {
-    public void glow();
-    public void dim();
-    public Player playerOf();
+    public abstract void glow();
+    public abstract void dim();
+    public abstract Player playerOf();
 }

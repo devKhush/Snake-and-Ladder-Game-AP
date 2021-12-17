@@ -1,10 +1,10 @@
 package sample;
 
-public class PlayerThread extends Thread{
+public class PlayerHandler extends Thread{
     Player player1, player2;
     SnakeAndLadderGame game;
 
-    public PlayerThread(Player player1, Player player2, SnakeAndLadderGame game) {
+    public PlayerHandler(Player player1, Player player2, SnakeAndLadderGame game) {
         this.player1 = player1;
         this.player2 = player2;
         this.game = game;
@@ -38,6 +38,5 @@ public class PlayerThread extends Thread{
             player2.dimPlayer();
             player1.glowPlayer();
         }
-        game.count++;
     }
 }

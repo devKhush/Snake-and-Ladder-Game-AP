@@ -16,18 +16,21 @@ public class PlayerImage implements PlayerComponent{
         this.playerMainImage = playerMainImage;
     }
 
+    @Override
     public void glow(){
 //        Glow glow = new Glow(0.8);
 //        playerMainImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerImage>(this,true));
     }
 
+    @Override
     public void dim(){
 //        Glow glow = new Glow(0.0);
 //        playerMainImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerImage>(this,false));
     }
 
+    @Override
     public Player playerOf() {
         return player;
     }

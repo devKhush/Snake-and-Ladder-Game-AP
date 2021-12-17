@@ -79,6 +79,6 @@ public class Die {
 //        } else if (faceValue == 6) {
 //            diceFaceImage.setImage(dice_image6.getImage());
 //        }
-        Platform.runLater(new DieRunnable(this));
+        Platform.runLater(new DieFaceChanger(this));
     }
 }

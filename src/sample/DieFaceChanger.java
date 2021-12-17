@@ -1,9 +1,9 @@
 package sample;
 
-public class DieRunnable implements Runnable{
+public class DieFaceChanger implements Runnable{
     private Die die;
 
-    public DieRunnable(Die die) {
+    public DieFaceChanger(Die die) {
         this.die = die;
     }
 

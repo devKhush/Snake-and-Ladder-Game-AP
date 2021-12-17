@@ -17,12 +17,14 @@ public class PlayerToken implements PlayerComponent{
         this.playerTokenImage = playerTokenImage;
     }
 
+    @Override
     public void glow(){
 //        Glow glow = new Glow(0.8);
 //        playerTokenImage.setEffect(glow);
         Platform.runLater(new AddPlayerEffect<PlayerToken>(this,true));
     }
 
+    @Override
     public void dim(){
 //        Glow glow = new Glow(0.0);
 //        playerTokenImage.setEffect(glow);
@@ -43,13 +45,14 @@ public class PlayerToken implements PlayerComponent{
             System.out.println(e.getMessage());
             System.out.println("Thread sleep failed...");
         }
-        Platform.runLater(new TokenRunnable(this));
+        Platform.runLater(new TokenMover(this));
     }
 
     public ImageView getPlayerTokenImage() {
         return playerTokenImage;
     }
 
+    @Override
     public Player playerOf() {
         return player;
     }
