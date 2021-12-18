@@ -1,6 +1,7 @@
 package sample.Game;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Glow;
@@ -30,11 +31,15 @@ public class SnakeAndLadderGame {
     private ImageView dice_image6;
     @FXML
     private ImageView rollingDie;
+    @FXML
+    private ImageView arrow;
+    @FXML
+    private ImageView arrowImage;
 
     @FXML
-    Button rollButton;
+    private Button realRollButton;
     @FXML
-    ImageView diceFaceImage;
+    private ImageView diceFaceImage;
 
     private int count=2;
 
@@ -63,6 +68,8 @@ public class SnakeAndLadderGame {
     private Ladder ladder;
     private Snake snake;
     private Die die;
+    private RollButton rollButton;
+    private MovingArrow movingArrow;
     private boolean isGameOver = false;
     private boolean isRollButtonDisable = false;
 
@@ -89,22 +96,22 @@ public class SnakeAndLadderGame {
         this.isGameOver = gameOver;
     }
 
-    public Button getRollButton() {
-        return rollButton;
+    public Button getRealRollButton() {
+        return realRollButton;
+    }
+
+    public MovingArrow getMovingArrow() {
+        return movingArrow;
     }
 
     public void setButtonSkin(){
         Glow glow = new Glow();
         glow.setLevel(0.8);
-        rollButton.setEffect(glow);
+        realRollButton.setEffect(glow);
     }
 
-    public boolean isRollButtonDisable() {
-        return isRollButtonDisable;
-    }
-
-    public void setRollButtonDisable(boolean rollButtonDisable) {
-        isRollButtonDisable = rollButtonDisable;
+    public RollButton getRollButton() {
+        return rollButton;
     }
 
     public Ladder getLadder() {
@@ -122,7 +129,7 @@ public class SnakeAndLadderGame {
     public void removeButtonSkin() {
         Glow glow = new Glow();
         glow.setLevel(0);
-        rollButton.setEffect(glow);
+        realRollButton.setEffect(glow);
     }
 
     @FXML
@@ -132,6 +139,8 @@ public class SnakeAndLadderGame {
         player2 = new Player(player2Token, player2Picture, player2Text);
         ladder = new Ladder();
         snake = new Snake();
+        rollButton = new RollButton(realRollButton);
+        movingArrow = new MovingArrow(arrow,arrowImage);
         die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6,rollingDie);
 
         player1Text.setText(MainWindow.getPlayerNames()[0]);
@@ -139,6 +148,7 @@ public class SnakeAndLadderGame {
         count = 0;
         player1.glowPlayer();
         player2.dimPlayer();
+        Platform.runLater(new MovingArrowHandler(getMovingArrow(),true));
     }
 
 }

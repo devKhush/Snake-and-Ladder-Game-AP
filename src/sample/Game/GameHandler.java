@@ -15,6 +15,7 @@ public class GameHandler extends Thread{
 
     @Override
     public void run() {
+        Platform.runLater(new MovingArrowHandler(game.getMovingArrow(),false));
         if (game.ifPlayer1Turn()) {
             player1.rollDie(game.getDie());
             game.getDie().setDiceFaceImage(game.getDie().getFaceValue());
@@ -33,8 +34,8 @@ public class GameHandler extends Thread{
 
         else if (game.ifPlayer2Turn()) {
             player2.rollDie(game.getDie());
-            Platform.runLater(new RollButtonHandler(game.getRollButton(),true));
             game.getDie().setDiceFaceImage(game.getDie().getFaceValue());
+            Platform.runLater(new RollButtonHandler(game.getRollButton(),true));
             if (game.ifPlayer2Turn() && player2.isPlayerGameStarted()) {
                 player2.movePLayer(game.getDie().getFaceValue(), game.getLadder(), game.getSnake());
             }
@@ -46,8 +47,11 @@ public class GameHandler extends Thread{
             Platform.runLater(new RollButtonHandler(game.getRollButton(),false));
         }
 
+        Platform.runLater(new MovingArrowHandler(game.getMovingArrow(),true));
+
         game.setGameOver(player1.isPlayerWon() || player2.isPlayerWon());
         if (game.isGameOver()){
+            Platform.runLater(new MovingArrowHandler(game.getMovingArrow(),false));
             System.out.println("Someone Won");
             if (player1.isPlayerWon()) {
                 EndGameResult.setWinner(player1);

@@ -3,10 +3,10 @@ package sample.Game;
 import javafx.scene.control.Button;
 
 public class RollButtonHandler implements Runnable{
-    private Button rollButton;
+    private RollButton rollButton;
     private boolean toDisable;
 
-    public RollButtonHandler(Button rollButton, boolean toDisable) {
+    public RollButtonHandler(RollButton rollButton, boolean toDisable) {
         this.rollButton = rollButton;
         this.toDisable = toDisable;
     }
@@ -14,8 +14,8 @@ public class RollButtonHandler implements Runnable{
     @Override
     public void run() {
         if (toDisable)
-            rollButton.setDisable(true);
+            rollButton.getRollButton().setDisable(true);
         else
-            rollButton.setDisable(false);
+            rollButton.getRollButton().setDisable(false);
     }
 }

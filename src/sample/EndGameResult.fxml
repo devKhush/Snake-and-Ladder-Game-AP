@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Game.EndGameResult">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Game.EndGameResult">
    <children>
       <ImageView fx:id="bckgrnd" fitHeight="523.0" fitWidth="415.0" pickOnBounds="true">
          <image>
-            <Image url="@assets/backdrop.jpg" />
+            <Image url="@assets/winnerstage.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="partyimage" fitHeight="171.0" fitWidth="415.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
@@ -19,9 +17,9 @@
             <Image url="@assets/party.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="82.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations !!!" textAlignment="CENTER">
+      <Text fill="#710d09" layoutX="82.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations !!!" textAlignment="CENTER">
          <font>
-            <Font size="31.0" />
+            <Font name="System Bold Italic" size="31.0" />
          </font>
       </Text>
       <Text fx:id="winnerText" fill="WHITE" layoutX="89.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player1" textAlignment="CENTER" wrappingWidth="252.82861328125">
@@ -39,17 +37,22 @@
             <Image url="@assets/winner.gif" />
          </image>
       </ImageView>
-      <Button fx:id="restartGameButton" layoutX="152.0" layoutY="462.0" mnemonicParsing="false" onAction="#playAgain" onMouseEntered="#setRestartGameButtonSkin" onMouseExited="#removeRestartGameButtonSkin" prefHeight="35.0" prefWidth="111.0" text="PLAY AGAIN">
+      <Button fx:id="restartGameButton" layoutX="152.0" layoutY="462.0" mnemonicParsing="false" onAction="#playAgain" onMouseEntered="#setRestartGameButtonSkin" onMouseExited="#removeRestartGameButtonSkin" prefHeight="35.0" prefWidth="111.0" style="-fx-background-radius: 20;" text="PLAY AGAIN">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="stopPlayingButton" layoutX="152.0" layoutY="414.0" mnemonicParsing="false" onAction="#stopPlaying" onMouseEntered="#setStopPlayingButtonSkin" onMouseExited="#removeStopPlayingButtonSkin" prefHeight="35.0" prefWidth="111.0" text="STOP PLAYING">
+      <Button fx:id="stopPlayingButton" layoutX="152.0" layoutY="408.0" mnemonicParsing="false" onAction="#stopPlaying" onMouseEntered="#setStopPlayingButtonSkin" onMouseExited="#removeStopPlayingButtonSkin" prefHeight="41.0" prefWidth="111.0" style="-fx-background-radius: 20;" text="STOP PLAYING">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
       <ImageView fitHeight="405.0" fitWidth="285.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/celebration.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="405.0" fitWidth="200.0" layoutX="208.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/celebration.gif" />
          </image>
