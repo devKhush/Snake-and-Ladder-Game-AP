@@ -9,24 +9,26 @@ public class Die {
     private Random random = new Random();
     private int numberOfFaces = 6;
     private int faceValue;
+    private ImageView rollingDie;
     private ImageView diceFaceImage;
-    private ImageView dice_image1;
-    private ImageView dice_image2;
-    private ImageView dice_image3;
-    private ImageView dice_image4;
-    private ImageView dice_image5;
-    private ImageView dice_image6;
+    private ImageView diceImage1;
+    private ImageView diceImage2;
+    private ImageView diceImage3;
+    private ImageView diceImage4;
+    private ImageView diceImage5;
+    private ImageView diceImage6;
 
-    public Die(int numberOfFaces,ImageView diceFaceImage, ImageView dice_image1, ImageView dice_image2, ImageView dice_image3, ImageView dice_image4, ImageView dice_image5, ImageView dice_image6) {
+    public Die(int numberOfFaces,ImageView diceFaceImage, ImageView diceImage1, ImageView diceImage2, ImageView diceImage3, ImageView diceImage4, ImageView diceImage5, ImageView diceImage6, ImageView rollingDie) {
         this.numberOfFaces = numberOfFaces;
         this.numberOfFaces = 6;
         this.diceFaceImage = diceFaceImage;
-        this.dice_image1 = dice_image1;
-        this.dice_image2 = dice_image2;
-        this.dice_image3 = dice_image3;
-        this.dice_image4 = dice_image4;
-        this.dice_image5 = dice_image5;
-        this.dice_image6 = dice_image6;
+        this.diceImage1 = diceImage1;
+        this.diceImage2 = diceImage2;
+        this.diceImage3 = diceImage3;
+        this.diceImage4 = diceImage4;
+        this.diceImage5 = diceImage5;
+        this.diceImage6 = diceImage6;
+        this.rollingDie = rollingDie;
     }
 
     public void roll(){
@@ -37,48 +39,39 @@ public class Die {
         return faceValue;
     }
 
+    public ImageView getRollingDie() {
+        return rollingDie;
+    }
+
     public ImageView getDiceFaceImage() {
         return diceFaceImage;
     }
 
-    public ImageView getDice_image1() {
-        return dice_image1;
+    public ImageView getDiceImage1() {
+        return diceImage1;
     }
 
-    public ImageView getDice_image2() {
-        return dice_image2;
+    public ImageView getDiceImage2() {
+        return diceImage2;
     }
 
-    public ImageView getDice_image3() {
-        return dice_image3;
+    public ImageView getDiceImage3() {
+        return diceImage3;
     }
 
-    public ImageView getDice_image4() {
-        return dice_image4;
+    public ImageView getDiceImage4() {
+        return diceImage4;
     }
 
-    public ImageView getDice_image5() {
-        return dice_image5;
+    public ImageView getDiceImage5() {
+        return diceImage5;
     }
 
-    public ImageView getDice_image6() {
-        return dice_image6;
+    public ImageView getDiceImage6() {
+        return diceImage6;
     }
 
     public void setDiceFaceImage(int faceValue){
-//        if (faceValue == 1) {
-//            diceFaceImage.setImage(dice_image1.getImage());
-//        } else if (faceValue == 2) {
-//            diceFaceImage.setImage(dice_image2.getImage());
-//        } else if (faceValue == 3) {
-//            diceFaceImage.setImage(dice_image3.getImage());
-//        } else if (faceValue == 4) {
-//            diceFaceImage.setImage(dice_image4.getImage());
-//        } else if (faceValue == 5) {
-//            diceFaceImage.setImage(dice_image5.getImage());
-//        } else if (faceValue == 6) {
-//            diceFaceImage.setImage(dice_image6.getImage());
-//        }
         Platform.runLater(new DieFaceChanger(this));
     }
 }

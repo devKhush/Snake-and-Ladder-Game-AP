@@ -9,9 +9,49 @@
 
 <AnchorPane prefHeight="699.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Game.SnakeAndLadderGame">
    <children>
-      <ImageView fitHeight="713.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rollingDie" fitHeight="60.0" fitWidth="60.0" layoutX="559.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/rollingDie.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice_image6" fitHeight="50.0" fitWidth="50.0" layoutX="502.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/dice6.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice_image5" fitHeight="50.0" fitWidth="50.0" layoutX="450.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/dice5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice_image4" fitHeight="50.0" fitWidth="50.0" layoutX="394.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/dice4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice_image3" fitHeight="50.0" fitWidth="50.0" layoutX="234.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/dice3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice_image2" fitHeight="50.0" fitWidth="50.0" layoutX="173.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/dice2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice_image1" fitHeight="50.0" fitWidth="50.0" layoutX="123.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/dice1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="706.0" fitWidth="704.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/backdrop.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="452.0" fitWidth="75.0" layoutX="-1.0" layoutY="78.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/moving_ladder.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="555.0" fitWidth="636.0" layoutX="72.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
@@ -19,7 +59,7 @@
             <Image url="@assets/BOARD.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="roll_button" layoutX="319.0" layoutY="648.0" mnemonicParsing="false" onAction="#rollButtonClicked" onMouseEntered="#setButtonSkin" onMouseExited="#removeButtonSkin" text="ROLL" textAlignment="CENTER">
+      <Button fx:id="roll_button" layoutX="319.0" layoutY="648.0" mnemonicParsing="false" onAction="#rollButtonClicked" onMouseEntered="#setButtonSkin" onMouseExited="#removeButtonSkin" style="-fx-background-radius: 10;" text="ROLL" textAlignment="CENTER">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font>
@@ -49,42 +89,6 @@
             <Font name="Arial Black" size="28.0" />
          </font>
       </Text>
-      <ImageView fitHeight="81.0" fitWidth="700.0" layoutY="700.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dice_image2" fitHeight="50.0" fitWidth="50.0" layoutX="169.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/dice2.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dice_image5" fitHeight="50.0" fitWidth="50.0" layoutX="481.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/dice5.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dice_image3" fitHeight="50.0" fitWidth="50.0" layoutX="269.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/dice3.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dice_image1" fitHeight="50.0" fitWidth="50.0" layoutX="63.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/dice1.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dice_image6" fitHeight="50.0" fitWidth="50.0" layoutX="587.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/dice6.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dice_image4" fitHeight="50.0" fitWidth="50.0" layoutX="374.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/dice4.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="61.0" fitWidth="700.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/bar.jpg" />
-         </image>
-      </ImageView>
       <ImageView fx:id="player1Token" fitHeight="45.0" fitWidth="45.0" layoutX="27.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/token1.png" />
@@ -96,11 +100,6 @@
          </image>
       </ImageView>
       <ImageView fitHeight="452.0" fitWidth="75.0" layoutX="627.0" layoutY="78.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
-         <image>
-            <Image url="@assets/moving_ladder.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="452.0" fitWidth="75.0" layoutX="-1.0" layoutY="78.0" pickOnBounds="true">
          <image>
             <Image url="@assets/moving_ladder.gif" />
          </image>

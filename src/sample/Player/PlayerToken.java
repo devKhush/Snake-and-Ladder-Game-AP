@@ -34,7 +34,7 @@ public class PlayerToken implements PlayerComponent {
         } catch (Exception e) {
             System.out.println(e);
             System.out.println(e.getMessage());
-            System.out.println("Thread sleep failed...");
+            System.out.println("Thread sleep failed in Translate PlayerToken class...");
         }
         Platform.runLater(new TokenMover(this));
     }

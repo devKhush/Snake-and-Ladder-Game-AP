@@ -8,10 +8,9 @@ import sample.Ladder.Ladder;
 import sample.Snake.Snake;
 
 public class Player {
-    private String name;
 
     @FXML
-    private PlayerTextName playerText;
+    private PlayerTextName playerName;
     @FXML
     private PlayerToken playerToken;
     @FXML
@@ -22,22 +21,29 @@ public class Player {
     private boolean playerGameStarted = false;
     private boolean playerWon = false;
 
-    public Player(ImageView playerToken, ImageView playerPicture, Text playerText) {
+    public Player(ImageView playerToken, ImageView playerPicture, Text playerName) {
         this.playerPicture = new PlayerImage(this,playerPicture);
-        this.playerText = new PlayerTextName(this,playerText);
+        this.playerName = new PlayerTextName(this, playerName);
         this.playerToken = new PlayerToken(this,playerToken);
-        this.name = playerText.getText();
     }
 
-    public String getName() {
-        return name;
-    }
+
 
     @FXML
     public void movePLayer(int byAmount, Ladder ladder, Snake snake){
         double initialXPosition = playerXLocation;
 
         for (int i=1; i<=byAmount; i++){
+
+//            if (i==1){
+//                try {
+//                    Thread.sleep(800);
+//                } catch (Exception e) {
+//                    System.out.println(e);
+//                    System.out.println(e.getMessage());
+//                    System.out.println("Thread sleep failed in Player class...");
+//                }
+//            }
 
             if ((playerYLocation==0) && (playerXLocation>=55 && playerXLocation<=550)){
                 if ((playerXLocation==550) && (playerYLocation==0)){
@@ -235,15 +241,19 @@ public class Player {
     }
 
     public void glowPlayer(){
-        playerText.glow();
+        playerName.glow();
         playerPicture.glow();
         playerToken.glow();
     }
 
     public void dimPlayer(){
-        playerText.dim();
+        playerName.dim();
         playerPicture.dim();
         playerToken.dim();
+    }
+
+    public PlayerTextName getPlayerName() {
+        return playerName;
     }
 
     public double getPlayerXLocation() {

@@ -11,11 +11,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
         Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
         primaryStage.getIcons().add(image);
         primaryStage.setTitle("Snakes & Ladders");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

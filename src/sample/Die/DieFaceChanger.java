@@ -11,18 +11,26 @@ public class DieFaceChanger implements Runnable{
 
     @Override
     public void run() {
+//        die.getDiceFaceImage().setImage(die.getRollingDie().getImage());
+//        try {
+//            Thread.sleep(4000);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            System.out.println(e.getMessage());
+//            System.out.println("Thread sleep failed...");
+//        }
         if (die.getFaceValue() == 1) {
-            die.getDiceFaceImage().setImage(die.getDice_image1().getImage());
+            die.getDiceFaceImage().setImage(die.getDiceImage1().getImage());
         } else if (die.getFaceValue() == 2) {
-            die.getDiceFaceImage().setImage(die.getDice_image2().getImage());
+            die.getDiceFaceImage().setImage(die.getDiceImage2().getImage());
         } else if (die.getFaceValue() == 3) {
-            die.getDiceFaceImage().setImage(die.getDice_image3().getImage());
+            die.getDiceFaceImage().setImage(die.getDiceImage3().getImage());
         } else if (die.getFaceValue() == 4) {
-            die.getDiceFaceImage().setImage(die.getDice_image4().getImage());
+            die.getDiceFaceImage().setImage(die.getDiceImage4().getImage());
         } else if (die.getFaceValue() == 5) {
-            die.getDiceFaceImage().setImage(die.getDice_image5().getImage());
+            die.getDiceFaceImage().setImage(die.getDiceImage5().getImage());
         } else if (die.getFaceValue() == 6) {
-            die.getDiceFaceImage().setImage(die.getDice_image6().getImage());
+            die.getDiceFaceImage().setImage(die.getDiceImage6().getImage());
         }
     }
 }

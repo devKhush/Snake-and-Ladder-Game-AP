@@ -3,8 +3,8 @@ package sample.Player;
 import sample.Game.SnakeAndLadderGame;
 
 public class PlayerHandler extends Thread{
-    Player player1, player2;
-    SnakeAndLadderGame game;
+    private Player player1, player2;
+    private SnakeAndLadderGame game;
 
     public PlayerHandler(Player player1, Player player2, SnakeAndLadderGame game) {
         this.player1 = player1;

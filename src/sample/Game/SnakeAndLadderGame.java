@@ -22,45 +22,46 @@ import java.io.IOException;
 public class SnakeAndLadderGame {
 
     @FXML
-    ImageView dice_image1;
+    private ImageView dice_image1;
     @FXML
-    ImageView dice_image2;
+    private ImageView dice_image2;
     @FXML
-    ImageView dice_image3;
+    private ImageView dice_image3;
     @FXML
-    ImageView dice_image4;
+    private ImageView dice_image4;
     @FXML
-    ImageView dice_image5;
+    private ImageView dice_image5;
     @FXML
-    ImageView dice_image6;
+    private ImageView dice_image6;
+    @FXML
+    private ImageView rollingDie;
 
     @FXML
     Button roll_button;
     @FXML
     ImageView diceFaceImage;
 
-    int count=2;
+    private int count=2;
 
     // Player's Information in the SnakeAndLadderGame
     @FXML
-    ImageView player2Picture;
+    private ImageView player2Picture;
     @FXML
-    ImageView player1Picture;
+    private ImageView player1Picture;
     @FXML
-    Text player1Text;
+    private Text player1Text;
     @FXML
-    Text player2Text;
+    private Text player2Text;
     @FXML
     private ImageView player1Token;
     @FXML
     private ImageView player2Token;
 
-    private End gameEndWindow;
+    private EndGameResult gameEndGameResultWindow;
+    private Stage endGame;
 
-    Stage endGame;
 
-
-    // Player Instantiation
+    // Players, Die, Ladder and Snake
     private Player player1 ;
     private Player player2 ;
     private Ladder ladder;
@@ -69,10 +70,10 @@ public class SnakeAndLadderGame {
     private boolean gameOver = false;
 
     public boolean ifPlayer1Turn(){
-        return (count%2)==0;
+        return (count%2)==1;
     }
     public boolean ifPlayer2Turn(){
-        return (count%2==1);
+        return (count%2==0);
     }
 
     public void rollButtonClicked() throws IOException {
@@ -80,23 +81,33 @@ public class SnakeAndLadderGame {
             PlayerHandler playerHandler = new PlayerHandler(player1,player2,this);
             playerHandler.start();
 
-            count++;
             gameOver = player1.isPlayerWon()||player2.isPlayerWon();
-            if (gameOver) {
-                if (player1.isPlayerWon()) {
-                    gameEndWindow = new End(player1,player2);
-                }
-                else if (player2.isPlayerWon()){
-                    gameEndWindow = new End(player2,player1);
-                }
-                endGame = new Stage();            // End can be made as composition in the Game
-                Parent root = FXMLLoader.load(getClass().getResource("../end.fxml"));
-                Image image = new Image(getClass().getResource("assets/snake.png").toExternalForm());
-                endGame.getIcons().add(image);
-                endGame.setTitle("Result of Game: "+player1.getName()+" vs "+player2.getName());
-                endGame.setScene(new Scene(root));
-                endGame.show();
+            count++;
+        }
+        if (gameOver){
+            System.out.println("Reached");
+            if (player1.isPlayerWon()) {
+                EndGameResult.setWinner(player1);
+                EndGameResult.setLooser(player2);
+                System.out.println("Player 1 won");
+                System.out.println(EndGameResult.getWinner().getPlayerName().getTextName().getText());
+                System.out.println(EndGameResult.getLooser().getPlayerName().getTextName().getText());
             }
+            else if (player2.isPlayerWon()){
+                EndGameResult.setWinner(player2);
+                EndGameResult.setLooser(player1);
+                System.out.println("Player 2 won");
+                System.out.println(EndGameResult.getWinner().getPlayerName().getTextName().getText());
+                System.out.println(EndGameResult.getLooser().getPlayerName().getTextName().getText());
+            }
+            endGame = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../EndGameResult.fxml"));
+            Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
+            endGame.getIcons().add(image);
+            endGame.setTitle("Result of Game: "+player1.getPlayerName().getTextName().getText()+" vs "+player2.getPlayerName().getTextName().getText());
+            endGame.setScene(new Scene(root));
+            endGame.setResizable(false);
+            endGame.show();
         }
     }
 
@@ -131,7 +142,7 @@ public class SnakeAndLadderGame {
         player2 = new Player(player2Token, player2Picture, player2Text);
         ladder = new Ladder();
         snake = new Snake();
-        die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6);
+        die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6,rollingDie);
 
         player1Text.setText(MainWindow.getPlayerNames()[0]);
         player2Text.setText(MainWindow.getPlayerNames()[1]);
