@@ -2,19 +2,14 @@ package sample.Game;
 
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Glow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import sample.Die.Die;
 import sample.Ladder.Ladder;
 import sample.Player.Player;
-import sample.Player.PlayerHandler;
 import sample.Snake.Snake;
 
 import java.io.IOException;
@@ -37,7 +32,7 @@ public class SnakeAndLadderGame {
     private ImageView rollingDie;
 
     @FXML
-    Button roll_button;
+    Button rollButton;
     @FXML
     ImageView diceFaceImage;
 
@@ -59,6 +54,7 @@ public class SnakeAndLadderGame {
 
     private EndGameResult gameEndGameResultWindow;
     private Stage endGame;
+    private GameHandler gameHandler;
 
 
     // Players, Die, Ladder and Snake
@@ -67,7 +63,8 @@ public class SnakeAndLadderGame {
     private Ladder ladder;
     private Snake snake;
     private Die die;
-    private boolean gameOver = false;
+    private boolean isGameOver = false;
+    private boolean isRollButtonDisable = false;
 
     public boolean ifPlayer1Turn(){
         return (count%2)==1;
@@ -77,44 +74,37 @@ public class SnakeAndLadderGame {
     }
 
     public void rollButtonClicked() throws IOException {
-        if (!gameOver) {
-            PlayerHandler playerHandler = new PlayerHandler(player1,player2,this);
-            playerHandler.start();
-
-            gameOver = player1.isPlayerWon()||player2.isPlayerWon();
+        if ((!isGameOver) && (!isRollButtonDisable)) {
+            gameHandler = new GameHandler(player1,player2,this);
+            gameHandler.start();
             count++;
         }
-        if (gameOver){
-            System.out.println("Reached");
-            if (player1.isPlayerWon()) {
-                EndGameResult.setWinner(player1);
-                EndGameResult.setLooser(player2);
-                System.out.println("Player 1 won");
-                System.out.println(EndGameResult.getWinner().getPlayerName().getTextName().getText());
-                System.out.println(EndGameResult.getLooser().getPlayerName().getTextName().getText());
-            }
-            else if (player2.isPlayerWon()){
-                EndGameResult.setWinner(player2);
-                EndGameResult.setLooser(player1);
-                System.out.println("Player 2 won");
-                System.out.println(EndGameResult.getWinner().getPlayerName().getTextName().getText());
-                System.out.println(EndGameResult.getLooser().getPlayerName().getTextName().getText());
-            }
-            endGame = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("../EndGameResult.fxml"));
-            Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
-            endGame.getIcons().add(image);
-            endGame.setTitle("Result of Game: "+player1.getPlayerName().getTextName().getText()+" vs "+player2.getPlayerName().getTextName().getText());
-            endGame.setScene(new Scene(root));
-            endGame.setResizable(false);
-            endGame.show();
-        }
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.isGameOver = gameOver;
+    }
+
+    public Button getRollButton() {
+        return rollButton;
     }
 
     public void setButtonSkin(){
         Glow glow = new Glow();
         glow.setLevel(0.8);
-        roll_button.setEffect(glow);
+        rollButton.setEffect(glow);
+    }
+
+    public boolean isRollButtonDisable() {
+        return isRollButtonDisable;
+    }
+
+    public void setRollButtonDisable(boolean rollButtonDisable) {
+        isRollButtonDisable = rollButtonDisable;
     }
 
     public Ladder getLadder() {
@@ -132,7 +122,7 @@ public class SnakeAndLadderGame {
     public void removeButtonSkin() {
         Glow glow = new Glow();
         glow.setLevel(0);
-        roll_button.setEffect(glow);
+        rollButton.setEffect(glow);
     }
 
     @FXML

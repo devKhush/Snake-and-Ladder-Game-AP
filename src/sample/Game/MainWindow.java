@@ -56,8 +56,6 @@ public class MainWindow {
         Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
         snakeAndLadderGame.getIcons().add(image);
         snakeAndLadderGame.setTitle(title1+" vs "+title2);
-        playerNames[0] = title1;
-        playerNames[1] = title2;
         snakeAndLadderGame.setScene(new Scene(root));
         snakeAndLadderGame.setResizable(false);
         snakeAndLadderGame.show();
