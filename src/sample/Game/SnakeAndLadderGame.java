@@ -32,14 +32,13 @@ public class SnakeAndLadderGame {
     @FXML
     private ImageView rollingDie;
     @FXML
+    private ImageView diceFaceImage;
+    @FXML
     private ImageView arrow;
     @FXML
     private ImageView arrowImage;
-
     @FXML
     private Button realRollButton;
-    @FXML
-    private ImageView diceFaceImage;
 
     private int count=2;
 
@@ -94,10 +93,6 @@ public class SnakeAndLadderGame {
 
     public void setGameOver(boolean gameOver) {
         this.isGameOver = gameOver;
-    }
-
-    public Button getRealRollButton() {
-        return realRollButton;
     }
 
     public MovingArrow getMovingArrow() {

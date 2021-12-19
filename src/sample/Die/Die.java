@@ -17,6 +17,7 @@ public class Die {
     private ImageView diceImage4;
     private ImageView diceImage5;
     private ImageView diceImage6;
+    private DieFaceChanger dieFaceChanger;
 
     public Die(int numberOfFaces,ImageView diceFaceImage, ImageView diceImage1, ImageView diceImage2, ImageView diceImage3, ImageView diceImage4, ImageView diceImage5, ImageView diceImage6, ImageView rollingDie) {
         this.numberOfFaces = numberOfFaces;
@@ -72,6 +73,7 @@ public class Die {
     }
 
     public void setDiceFaceImage(int faceValue){
-        Platform.runLater(new DieFaceChanger(this));
+        dieFaceChanger = new DieFaceChanger(this);
+        Platform.runLater(dieFaceChanger);
     }
 }

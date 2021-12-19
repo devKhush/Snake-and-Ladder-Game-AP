@@ -109,6 +109,6 @@
             <Image url="@assets/moving_ladder.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="arrowImage" fitHeight="82.0" fitWidth="87.0" layoutX="303.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="arrowImage" fitHeight="82.0" fitWidth="87.0" layoutX="309.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

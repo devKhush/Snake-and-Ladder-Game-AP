@@ -11,14 +11,6 @@ public class DieFaceChanger implements Runnable{
 
     @Override
     public void run() {
-//        die.getDiceFaceImage().setImage(die.getRollingDie().getImage());
-//        try {
-//            Thread.sleep(4000);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            System.out.println(e.getMessage());
-//            System.out.println("Thread sleep failed...");
-//        }
         if (die.getFaceValue() == 1) {
             die.getDiceFaceImage().setImage(die.getDiceImage1().getImage());
         } else if (die.getFaceValue() == 2) {

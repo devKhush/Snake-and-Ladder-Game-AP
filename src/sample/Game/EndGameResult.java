@@ -18,6 +18,7 @@ public class EndGameResult {
 
     private static Player winner;
     private static Player looser;
+    private static SnakeAndLadderGame gameToBeClose;
 
     @FXML
     private Text winnerText;
@@ -31,14 +32,6 @@ public class EndGameResult {
     @FXML
     private Stage newGame;
 
-    public static Player getWinner() {
-        return winner;
-    }
-
-    public static Player getLooser() {
-        return looser;
-    }
-
     public static void setWinner(Player winner) {
         EndGameResult.winner = winner;
     }
@@ -47,9 +40,15 @@ public class EndGameResult {
         EndGameResult.looser = looser;
     }
 
+    public static void setGameToBeClose(SnakeAndLadderGame gameToBeClose) {
+        EndGameResult.gameToBeClose = gameToBeClose;
+    }
+
     public void playAgain(ActionEvent event) throws IOException {
         Stage mainWindow = (Stage) winnerText.getScene().getWindow();
         mainWindow.close();
+        Stage gameWindow = (Stage) gameToBeClose.getMovingArrow().getArrow().getScene().getWindow();
+        gameWindow.close();
         newGame = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../MainWindow.fxml"));
         Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
@@ -62,6 +61,8 @@ public class EndGameResult {
     public void stopPlaying(ActionEvent event) throws IOException {
         Stage mainWindow = (Stage) winnerText.getScene().getWindow();
         mainWindow.close();
+        Stage gameWindow = (Stage) gameToBeClose.getMovingArrow().getArrow().getScene().getWindow();
+        gameWindow.close();
     }
 
     public void setRestartGameButtonSkin(){
