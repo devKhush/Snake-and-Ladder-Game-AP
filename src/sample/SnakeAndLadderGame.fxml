@@ -94,16 +94,6 @@
             <Font name="Arial Black" size="28.0" />
          </font>
       </Text>
-      <ImageView fx:id="player1Token" fitHeight="45.0" fitWidth="45.0" layoutX="27.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/token1.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="player2Token" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="523.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/token2.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="452.0" fitWidth="75.0" layoutX="627.0" layoutY="78.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
          <image>
             <Image url="@assets/moving_ladder.gif" />
@@ -118,6 +108,16 @@
       <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/winnerFlag.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player2Token" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="523.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/token2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player1Token" fitHeight="45.0" fitWidth="45.0" layoutX="27.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/token1.png" />
          </image>
       </ImageView>
    </children>
