@@ -7,12 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import sample.Die.Die;
 import sample.Ladder.Ladder;
 import sample.Player.Player;
 import sample.Snake.Snake;
 
+import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class SnakeAndLadderGame {
@@ -56,8 +56,7 @@ public class SnakeAndLadderGame {
     @FXML
     private ImageView player2Token;
 
-    private EndGameResult gameEndGameResultWindow;
-    private Stage endGame;
+    private EndGameResult gameEndGameResult = null;
     private GameHandler gameHandler;
 
 
@@ -79,9 +78,9 @@ public class SnakeAndLadderGame {
         return (count%2==0);
     }
 
-    public void rollButtonClicked() throws IOException {
+    public void rollButtonClicked(ActionEvent event) throws IOException {
         if ((!isGameOver) && (!isRollButtonDisable)) {
-            gameHandler = new GameHandler(player1,player2,this);
+            gameHandler = new GameHandler(this,event);
             gameHandler.start();
             count++;
         }
@@ -127,19 +126,43 @@ public class SnakeAndLadderGame {
         realRollButton.setEffect(glow);
     }
 
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public void setPlayer1Name(String name){
+        player1.getPlayerName().getTextName().setText(name);
+    }
+
+    public void setPlayer2Name(String name){
+        player2.getPlayerName().getTextName().setText(name);
+    }
+
+    public EndGameResult getGameEndGameResult() {
+        return gameEndGameResult;
+    }
+
+    public void setGameEndGameResult(EndGameResult gameEndGameResult) {
+        this.gameEndGameResult = gameEndGameResult;
+    }
+
     @FXML
     public void initialize() {
         // Instantiate Player 1 and 2;
         player1 = new Player(player1Token, player1Picture, player1Text);
         player2 = new Player(player2Token, player2Picture, player2Text);
-        ladder = new Ladder();
-        snake = new Snake();
+        ladder = new Ladder(this);
+        snake = new Snake(this);
         rollButton = new RollButton(realRollButton);
         movingArrow = new MovingArrow(arrow,arrowImage);
         die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6,rollingDie);
 
-        player1Text.setText(MainWindow.getPlayerNames()[0]);
-        player2Text.setText(MainWindow.getPlayerNames()[1]);
+//        player1Text.setText(MainWindow.getPlayerNames()[0]);
+//        player2Text.setText(MainWindow.getPlayerNames()[1]);
         count = 0;
         player1.glowPlayer();
         player2.dimPlayer();

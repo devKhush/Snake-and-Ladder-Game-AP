@@ -3,7 +3,6 @@ package sample.Player;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.paint.Color;
-import sample.Player.*;
 
 public class AddPlayerEffect<T extends PlayerComponent> implements Runnable{
     private T playerComponent;

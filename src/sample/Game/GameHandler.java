@@ -1,8 +1,12 @@
 package sample.Game;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import sample.Die.DieRoller;
 import sample.Player.Player;
+import java.io.IOException;
 
 public class GameHandler extends Thread{
     private Player player1, player2;
@@ -13,13 +17,17 @@ public class GameHandler extends Thread{
     private EndResultOpener endResultOpener;
     private RollButtonDisabler rollButtonDisabler;
     private DieRoller dieRoller;
+    private EndGameResult endGameResult;
+    private ActionEvent event;
 
-    public GameHandler(Player player1, Player player2, SnakeAndLadderGame game) {
-        this.player1 = player1;
-        this.player2 = player2;
+    public GameHandler(SnakeAndLadderGame game, ActionEvent event) {
+        this.player1 = game.getPlayer1();
+        this.player2 = game.getPlayer2();
         this.game = game;
         this.rollButton = game.getRollButton();
         this.movingArrow = game.getMovingArrow();
+        this.endGameResult = game.getGameEndGameResult();
+        this.event = event;
     }
 
     @Override
@@ -87,19 +95,31 @@ public class GameHandler extends Thread{
             movingArrowHandler = new MovingArrowHandler(game.getMovingArrow(),false);
             Platform.runLater(movingArrowHandler);
             System.out.println("Someone Won");
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EndGameResult.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                System.out.println("Loader failed...");
+            }
+            endGameResult = loader.getController();
+            System.out.println(endGameResult);
+            game.setGameEndGameResult(endGameResult);
+
             if (player1.isPlayerWon()) {
-                EndGameResult.setWinner(player1);
-                EndGameResult.setLooser(player2);
-                EndGameResult.setGameToBeClose(game);
+                endGameResult.setWinner(player1);
+                endGameResult.setLooser(player2);
+                endGameResult.setGameToBeClose(game);
                 System.out.println("Player 1 won");
             }
             else if (player2.isPlayerWon()){
-                EndGameResult.setWinner(player2);
-                EndGameResult.setLooser(player1);
-                EndGameResult.setGameToBeClose(game);
+                endGameResult.setWinner(player2);
+                endGameResult.setLooser(player1);
+                endGameResult.setGameToBeClose(game);
                 System.out.println("Player 2 won");
             }
-            endResultOpener = new EndResultOpener(game);
+            endResultOpener = new EndResultOpener(game,event, root);
             Platform.runLater(endResultOpener);
         }
     }

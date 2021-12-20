@@ -3,6 +3,7 @@ package sample.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,11 +17,7 @@ import java.io.IOException;
 
 public class MainWindow {
 
-    public static String[] getPlayerNames() {
-        return playerNames;
-    }
-
-    static String[] playerNames = new String[2];
+//    static String[] playerNames = new String[2];
 
     @FXML
     private ImageView image;
@@ -35,30 +32,46 @@ public class MainWindow {
     private TextField tfTitle2;
 
     @FXML
-    private Stage snakeAndLadderGame;
+    private Stage snakeAndLadderGameStage;
+
+    private SnakeAndLadderGame snakeAndLadderGame;
 
     @FXML
     void btnOKclicked(ActionEvent event) throws IOException {
         Stage mainWindow = (Stage) tfTitle1.getScene().getWindow();
-        String title1 = tfTitle1.getText();
-        String title2 = tfTitle2.getText();
-        if (title1.equals(""))
-            title1 = "Player1";
-        if (title2.equals(""))
-            title2 = "Player2";
-        mainWindow.setTitle(title1+" vs "+title2);
+        String player1Name = tfTitle1.getText();
+        String player2Name = tfTitle2.getText();
+        if (player1Name.equals(""))
+            player1Name = "Player1";
+        if (player2Name.equals(""))
+            player2Name = "Player2";
+        mainWindow.setTitle(player1Name+" vs "+player2Name);
         mainWindow.close();
 
-        playerNames[0] = title1;
-        playerNames[1] = title2;
-        snakeAndLadderGame = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../SnakeAndLadderGame.fxml"));
+//        playerNames[0] = player1Name;
+//        playerNames[1] = player2Name;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../SnakeAndLadderGame.fxml"));
+        Parent root = loader.load();
+        snakeAndLadderGame = loader.getController();
+        snakeAndLadderGame.setPlayer1Name(player1Name);
+        snakeAndLadderGame.setPlayer2Name(player2Name);
         Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
-        snakeAndLadderGame.getIcons().add(image);
-        snakeAndLadderGame.setTitle(title1+" vs "+title2);
-        snakeAndLadderGame.setScene(new Scene(root));
-        snakeAndLadderGame.setResizable(false);
-        snakeAndLadderGame.show();
+        snakeAndLadderGameStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        snakeAndLadderGameStage.getIcons().add(image);
+        snakeAndLadderGameStage.setTitle(player1Name+" vs "+player2Name);
+        snakeAndLadderGameStage.setScene(new Scene(root));
+        snakeAndLadderGameStage.setResizable(false);
+        snakeAndLadderGameStage.show();
+
+//        snakeAndLadderGameStage = new Stage();
+//        Parent root = FXMLLoader.load(getClass().getResource("../SnakeAndLadderGame.fxml"));
+//        Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
+//        snakeAndLadderGameStage.getIcons().add(image);
+//        snakeAndLadderGameStage.setTitle(player1Name+" vs "+player2Name);
+//        snakeAndLadderGameStage.setScene(new Scene(root));
+//        snakeAndLadderGameStage.setResizable(false);
+//        snakeAndLadderGameStage.show();
     }
 
     public void setButtonSkin(){
