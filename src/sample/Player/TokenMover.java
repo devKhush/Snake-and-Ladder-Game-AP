@@ -2,7 +2,6 @@ package sample.Player;
 
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
-import sample.Player.*;
 
 public class TokenMover implements Runnable{
     private PlayerToken token;
@@ -13,7 +12,7 @@ public class TokenMover implements Runnable{
 
     @Override
     public void run() {
-        TranslateTransition animate = new TranslateTransition(Duration.millis(800), token.getPlayerTokenImage());
+        TranslateTransition animate = new TranslateTransition(Duration.millis(500), token.getPlayerTokenImage());
         animate.setToX(token.playerOf().getPlayerXLocation());
         animate.setToY(token.playerOf().getPlayerYLocation());
         animate.setAutoReverse(false);

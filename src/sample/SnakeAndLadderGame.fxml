@@ -9,14 +9,14 @@
 
 <AnchorPane prefHeight="699.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Game.SnakeAndLadderGame">
    <children>
-      <ImageView fx:id="arrow" fitHeight="74.0" fitWidth="69.0" layoutX="617.0" layoutY="599.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/arrow.gif" />
-         </image>
-      </ImageView>
       <ImageView fx:id="rollingDie" fitHeight="60.0" fitWidth="60.0" layoutX="559.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/rollingDie.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrow" fitHeight="74.0" fitWidth="69.0" layoutX="617.0" layoutY="599.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/arrow.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="dice_image6" fitHeight="50.0" fitWidth="50.0" layoutX="502.0" layoutY="648.0" pickOnBounds="true" preserveRatio="true">
@@ -99,15 +99,9 @@
             <Image url="@assets/moving_ladder.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="arrowImage" fitHeight="82.0" fitWidth="87.0" layoutX="309.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="15.0" fitWidth="50.0" layoutX="78.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/initial_arrow.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/winnerFlag.png" />
          </image>
       </ImageView>
       <ImageView fx:id="player2Token" fitHeight="45.0" fitWidth="45.0" layoutX="14.0" layoutY="523.0" pickOnBounds="true" preserveRatio="true">
@@ -120,5 +114,11 @@
             <Image url="@assets/token1.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/winnerFlag.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="arrowImage" fitHeight="82.0" fitWidth="87.0" layoutX="309.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
