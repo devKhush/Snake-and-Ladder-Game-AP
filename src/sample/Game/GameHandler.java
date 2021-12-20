@@ -2,11 +2,8 @@ package sample.Game;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import sample.Die.DieRoller;
 import sample.Player.Player;
-import java.io.IOException;
 
 public class GameHandler extends Thread{
     private Player player1, player2;
@@ -96,30 +93,19 @@ public class GameHandler extends Thread{
             Platform.runLater(movingArrowHandler);
             System.out.println("Someone Won");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EndGameResult.fxml"));
-            Parent root = null;
-            try {
-                root = loader.load();
-            } catch (IOException e) {
-                System.out.println("Loader failed...");
-            }
-            endGameResult = loader.getController();
-            System.out.println(endGameResult);
-            game.setGameEndGameResult(endGameResult);
-
             if (player1.isPlayerWon()) {
-                endGameResult.setWinner(player1);
-                endGameResult.setLooser(player2);
-                endGameResult.setGameToBeClose(game);
+                EndGameResult.setWinner(player1);
+                EndGameResult.setLooser(player2);
+                EndGameResult.setGameToBeClose(game);
                 System.out.println("Player 1 won");
             }
             else if (player2.isPlayerWon()){
-                endGameResult.setWinner(player2);
-                endGameResult.setLooser(player1);
-                endGameResult.setGameToBeClose(game);
+                EndGameResult.setWinner(player2);
+                EndGameResult.setLooser(player1);
+                EndGameResult.setGameToBeClose(game);
                 System.out.println("Player 2 won");
             }
-            endResultOpener = new EndResultOpener(game,event, root);
+            endResultOpener = new EndResultOpener(game);
             Platform.runLater(endResultOpener);
         }
     }

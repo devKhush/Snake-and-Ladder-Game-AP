@@ -16,9 +16,9 @@ import java.io.IOException;
 
 public class EndGameResult {
 
-    private  Player winner;
-    private  Player looser;
-    private SnakeAndLadderGame gameToBeClose;
+    private static Player winner;
+    private static Player looser;
+    private static SnakeAndLadderGame gameToBeClose;
 
     @FXML
     private Text winnerText;
@@ -32,16 +32,16 @@ public class EndGameResult {
     @FXML
     private Stage newGame;
 
-    public  void setWinner(Player winner) {
-        this.winner = winner;
+    public static void setWinner(Player winner) {
+        EndGameResult.winner = winner;
     }
 
-    public  void setLooser(Player looser) {
-        this.looser = looser;
+    public static void setLooser(Player looser) {
+        EndGameResult.looser = looser;
     }
 
-    public  void setGameToBeClose(SnakeAndLadderGame gameToBeClose) {
-        this.gameToBeClose = gameToBeClose;
+    public static void setGameToBeClose(SnakeAndLadderGame gameToBeClose) {
+        EndGameResult.gameToBeClose = gameToBeClose;
     }
 
     public void playAgain(ActionEvent event) throws IOException {

@@ -17,8 +17,6 @@ import java.io.IOException;
 
 public class MainWindow {
 
-//    static String[] playerNames = new String[2];
-
     @FXML
     private ImageView image;
 
@@ -47,9 +45,6 @@ public class MainWindow {
             player2Name = "Player2";
         mainWindow.setTitle(player1Name+" vs "+player2Name);
         mainWindow.close();
-
-//        playerNames[0] = player1Name;
-//        playerNames[1] = player2Name;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../SnakeAndLadderGame.fxml"));
         Parent root = loader.load();
@@ -80,8 +75,7 @@ public class MainWindow {
         startButton.setEffect(glow);
     }
 
-    public void removeButtonSkin()
-    {
+    public void removeButtonSkin() {
         Glow glow = new Glow();
         glow.setLevel(0);
         startButton.setEffect(glow);
