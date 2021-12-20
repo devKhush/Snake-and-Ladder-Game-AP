@@ -8,6 +8,7 @@ public class PlayerTextName implements PlayerComponent {
     @FXML
     private Text textName;
 
+    private AddPlayerEffect<PlayerTextName> addPlayerEffect;
     @FXML
     private Player player;
 
@@ -18,12 +19,14 @@ public class PlayerTextName implements PlayerComponent {
 
     @Override
     public void glow() {
-        Platform.runLater(new AddPlayerEffect<PlayerTextName>(this,true));
+        addPlayerEffect = new AddPlayerEffect<PlayerTextName>(this,true);
+        Platform.runLater(addPlayerEffect);
     }
 
     @Override
     public void dim() {
-        Platform.runLater(new AddPlayerEffect<PlayerTextName>(this,false));
+        addPlayerEffect = new AddPlayerEffect<PlayerTextName>(this,false);
+        Platform.runLater(addPlayerEffect);
     }
 
     public Text getTextName() {

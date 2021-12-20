@@ -142,14 +142,6 @@ public class SnakeAndLadderGame {
         player2.getPlayerName().getTextName().setText(name);
     }
 
-    public EndGameResult getGameEndGameResult() {
-        return gameEndGameResult;
-    }
-
-    public void setGameEndGameResult(EndGameResult gameEndGameResult) {
-        this.gameEndGameResult = gameEndGameResult;
-    }
-
     @FXML
     public void initialize() {
         // Instantiate Player 1 and 2;
@@ -160,6 +152,7 @@ public class SnakeAndLadderGame {
         rollButton = new RollButton(realRollButton);
         movingArrow = new MovingArrow(arrow,arrowImage);
         die = new Die(6,diceFaceImage,dice_image1,dice_image2,dice_image3,dice_image4,dice_image5,dice_image6,rollingDie);
+        gameEndGameResult = new EndGameResult();
 
 //        player1Text.setText(MainWindow.getPlayerNames()[0]);
 //        player2Text.setText(MainWindow.getPlayerNames()[1]);

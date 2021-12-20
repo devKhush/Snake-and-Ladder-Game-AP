@@ -14,7 +14,6 @@ public class GameHandler extends Thread{
     private EndResultOpener endResultOpener;
     private RollButtonDisabler rollButtonDisabler;
     private DieRoller dieRoller;
-    private EndGameResult endGameResult;
     private ActionEvent event;
 
     public GameHandler(SnakeAndLadderGame game, ActionEvent event) {
@@ -23,7 +22,6 @@ public class GameHandler extends Thread{
         this.game = game;
         this.rollButton = game.getRollButton();
         this.movingArrow = game.getMovingArrow();
-        this.endGameResult = game.getGameEndGameResult();
         this.event = event;
     }
 

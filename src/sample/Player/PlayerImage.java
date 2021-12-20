@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 public class PlayerImage implements PlayerComponent{
     @FXML
     private ImageView playerMainImage;
+    private AddPlayerEffect<PlayerImage> addPlayerEffect;
 
     @FXML
     Player player;
@@ -18,12 +19,14 @@ public class PlayerImage implements PlayerComponent{
 
     @Override
     public void glow(){
-        Platform.runLater(new AddPlayerEffect<PlayerImage>(this,true));
+        addPlayerEffect = new AddPlayerEffect<PlayerImage>(this,true);
+        Platform.runLater(addPlayerEffect);
     }
 
     @Override
     public void dim(){
-        Platform.runLater(new AddPlayerEffect<PlayerImage>(this,false));
+        addPlayerEffect = new AddPlayerEffect<PlayerImage>(this,false);
+        Platform.runLater(addPlayerEffect);
     }
 
     @Override

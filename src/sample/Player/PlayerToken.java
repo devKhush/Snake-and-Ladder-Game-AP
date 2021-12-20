@@ -8,6 +8,8 @@ public class PlayerToken implements PlayerComponent {
 
     @FXML
     private ImageView playerTokenImage;
+    private TokenMover tokenMover;
+    private AddPlayerEffect<PlayerToken> addPlayerEffect;
 
     @FXML
     private Player player;
@@ -19,12 +21,14 @@ public class PlayerToken implements PlayerComponent {
 
     @Override
     public void glow(){
-        Platform.runLater(new AddPlayerEffect<PlayerToken>(this,true));
+        addPlayerEffect = new AddPlayerEffect<PlayerToken>(this,true);
+        Platform.runLater(addPlayerEffect);
     }
 
     @Override
     public void dim(){
-        Platform.runLater(new AddPlayerEffect<PlayerToken>(this,false));
+        addPlayerEffect = new AddPlayerEffect<PlayerToken>(this,false);
+        Platform.runLater(addPlayerEffect);
     }
 
     @FXML
@@ -36,7 +40,8 @@ public class PlayerToken implements PlayerComponent {
             System.out.println(e.getMessage());
             System.out.println("Thread sleep failed in Translate PlayerToken class...");
         }
-        Platform.runLater(new TokenMover(this));
+        tokenMover = new TokenMover(this);
+        Platform.runLater(tokenMover);
     }
 
     public ImageView getPlayerTokenImage() {

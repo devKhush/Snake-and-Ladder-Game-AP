@@ -29,7 +29,7 @@ public class EndResultOpener implements Runnable{
         }
         Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
         endGame.getIcons().add(image);
-        endGame.setTitle("Result of Game: '"+gameToBeEnd.getPlayer1().getPlayerName().getTextName()+"' vs '"+gameToBeEnd.getPlayer2().getPlayerName().getTextName()+"'");
+        endGame.setTitle("Result of Game: '"+gameToBeEnd.getPlayer1().getPlayerName().getTextName().getText()+"' vs '"+gameToBeEnd.getPlayer2().getPlayerName().getTextName().getText()+"'");
         endGame.setScene(new Scene(root));
         endGame.setResizable(false);
         endGame.show();
