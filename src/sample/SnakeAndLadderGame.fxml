@@ -110,5 +110,15 @@
          </image>
       </ImageView>
       <ImageView fx:id="arrowImage" fitHeight="82.0" fitWidth="87.0" layoutX="309.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="15.0" fitWidth="50.0" layoutX="78.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/initial_arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/winnerFlag.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
