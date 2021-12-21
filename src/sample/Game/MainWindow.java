@@ -35,7 +35,7 @@ public class MainWindow {
     private SnakeAndLadderGame snakeAndLadderGame;
 
     @FXML
-    void btnOKclicked(ActionEvent event) throws IOException {
+    public void btnOKclicked(ActionEvent event) throws IOException {
         Stage mainWindow = (Stage) tfTitle1.getScene().getWindow();
         String player1Name = tfTitle1.getText();
         String player2Name = tfTitle2.getText();
@@ -54,9 +54,10 @@ public class MainWindow {
         Image image = new Image(getClass().getResource("../assets/snake.png").toExternalForm());
         snakeAndLadderGameStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         snakeAndLadderGameStage.getIcons().add(image);
-        snakeAndLadderGameStage.setTitle(player1Name+" vs "+player2Name);
+        snakeAndLadderGameStage.setTitle("Snake & Ladder : '"+player1Name+"' vs '"+player2Name+"'");
         snakeAndLadderGameStage.setScene(new Scene(root));
         snakeAndLadderGameStage.setResizable(false);
+        //snakeAndLadderGameStage.setMaximized(true);
         snakeAndLadderGameStage.show();
 
 //        snakeAndLadderGameStage = new Stage();
