@@ -12,7 +12,7 @@ public class TokenMover implements Runnable{
 
     @Override
     public void run() {
-        TranslateTransition animate = new TranslateTransition(Duration.millis(500), token.getPlayerTokenImage());
+        TranslateTransition animate = new TranslateTransition(Duration.millis(700), token.getPlayerTokenImage());
         animate.setToX(token.playerOf().getPlayerXLocation());
         animate.setToY(token.playerOf().getPlayerYLocation());
         animate.setAutoReverse(false);
