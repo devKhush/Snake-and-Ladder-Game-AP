@@ -27,9 +27,9 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Text fx:id="loserText" fill="WHITE" layoutX="73.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" textAlignment="CENTER" wrappingWidth="269.3332214355469">
+      <Text fx:id="loserText" fill="WHITE" layoutX="73.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" textAlignment="CENTER" wrappingWidth="269.3332214355469">
          <font>
-            <Font size="19.0" />
+            <Font size="17.0" />
          </font>
       </Text>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="108.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
