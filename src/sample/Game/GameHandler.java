@@ -50,6 +50,13 @@ public class GameHandler extends Thread{
             if ((game.ifPlayer1Turn()) && (!player1.isPlayerGameStarted()) && (game.getDie().getFaceValue() == 1)) {
                 player1.initialMove();
             }
+            try {
+                Thread.sleep(450);
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println(e.getMessage());
+                System.out.println("Waiting in Game Handler sleep failed...");
+            }
             player1.dimPlayer();
             player2.glowPlayer();
             rollButtonDisabler = new RollButtonDisabler(game.getRollButton(),false);
@@ -75,6 +82,13 @@ public class GameHandler extends Thread{
             }
             if ((game.ifPlayer2Turn()) && (!player2.isPlayerGameStarted()) && (game.getDie().getFaceValue() == 1)) {
                 player2.initialMove();
+            }
+            try {
+                Thread.sleep(450);
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println(e.getMessage());
+                System.out.println("Waiting in Game Handler sleep failed...");
             }
             player2.dimPlayer();
             player1.glowPlayer();

@@ -27,6 +27,16 @@ public class Player {
         this.playerToken = new PlayerToken(this,playerToken);
     }
 
+    private void waitTokenForSomeTime(){
+        try {
+            Thread.sleep(500);
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println(e.getMessage());
+            System.out.println("Thread sleep failed in Player class...");
+        }
+    }
+
 
 
     @FXML
@@ -34,16 +44,10 @@ public class Player {
         double initialXPosition = playerXLocation;
 
         for (int i=1; i<=byAmount; i++){
-
-//            if (i==1){
-//                try {
-//                    Thread.sleep(800);
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                    System.out.println(e.getMessage());
-//                    System.out.println("Thread sleep failed in Player class...");
-//                }
-//            }
+            this.waitTokenForSomeTime();
+            if ((playerYLocation == -495) && (playerXLocation >= 55 && playerXLocation <= 385) && ((byAmount*55)>(initialXPosition-55))) {
+                return;
+            }
 
             if ((playerYLocation==0) && (playerXLocation>=55 && playerXLocation<=550)){
                 if ((playerXLocation==550) && (playerYLocation==0)){
@@ -233,6 +237,7 @@ public class Player {
     public void initialMove(){
         playerGameStarted = true;
         playerXLocation = 55;
+        this.waitTokenForSomeTime();
         playerToken.translatePlayerToken();
     }
 

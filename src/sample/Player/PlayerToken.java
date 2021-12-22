@@ -33,13 +33,6 @@ public class PlayerToken implements PlayerComponent {
 
     @FXML
     public void translatePlayerToken(){
-        try {
-            Thread.sleep(800);
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println(e.getMessage());
-            System.out.println("Thread sleep failed in Translate PlayerToken class...");
-        }
         tokenMover = new TokenMover(this);
         Platform.runLater(tokenMover);
     }
