@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 
 import java.util.Random;
 
+
 public class Die {
     private Random random = new Random();
     private int numberOfFaces = 6;
